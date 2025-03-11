@@ -55,13 +55,7 @@ temp
 # pnpm-lock.yaml
 
 # Misc
-components.json
-vercel.json
 
 tsconfig.tsbuildinfo
 **/*.tsbuildinfo
 
-
-# Deployment config files - uncomment if you want to exclude from version control
-# vercel.json
-# netlify.toml
