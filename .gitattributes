@@ -1,0 +1,9 @@
+# Mark config files as generated to hide them in GitHub's interface
+vite.config.ts linguist-generated=true
+vercel.json linguist-generated=true
+components.json linguist-generated=true
+postcss.config.js linguist-generated=true
+tailwind.config.js linguist-generated=true
+eslint.config.js linguist-generated=true
+tsconfig.json linguist-generated=true
+*.config.js linguist-generated=true
