@@ -55,8 +55,8 @@ temp
 # pnpm-lock.yaml
 
 # Misc
-.eslint.config.js
-.components.json
+eslint.config.js
+components.json
 
 tsconfig.tsbuildinfo
 **/*.tsbuildinfo
