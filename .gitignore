@@ -55,8 +55,8 @@ temp
 # pnpm-lock.yaml
 
 # Misc
-eslint.config.js
 components.json
+vercel.json
 
 tsconfig.tsbuildinfo
 **/*.tsbuildinfo
