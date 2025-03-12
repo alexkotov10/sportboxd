@@ -8,7 +8,14 @@ import { useRatings, RatedGame } from "../context/RatingsContext";
 
 // Format date as YYYYMMDD for API
 const formatDateForAPI = (date: Date): string => {
-  return date.toISOString().split("T")[0].replace(/-/g, "");
+  // Create a new date to avoid modifying the original
+  const apiDate = new Date(date);
+
+  // Subtract one day to align with ESPN's schedule display
+  apiDate.setDate(apiDate.getDate() - 1);
+
+  // Format as YYYYMMDD for the ESPN API
+  return apiDate.toISOString().split("T")[0].replace(/-/g, "");
 };
 
 // Format date for display
