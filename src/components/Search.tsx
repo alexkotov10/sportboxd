@@ -12,7 +12,7 @@ const formatDateForAPI = (date: Date): string => {
   const apiDate = new Date(date);
 
   // Subtract one day to align with ESPN's schedule display
-  apiDate.setDate(apiDate.getDate() - 1);
+  apiDate.setDate(apiDate.getDate());
 
   // Format as YYYYMMDD for the ESPN API
   return apiDate.toISOString().split("T")[0].replace(/-/g, "");
