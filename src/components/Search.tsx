@@ -6,21 +6,52 @@ import { Calendar } from "./ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { useRatings, RatedGame } from "../context/RatingsContext";
 
+// Get current date in Eastern Time (EST/EDT)
+const getEasternTime = (): Date => {
+  const now = new Date();
+
+  // Create date string in ET format
+  const etDateString = now.toLocaleString("en-US", {
+    timeZone: "America/New_York",
+  });
+
+  // Parse the ET date string back to a Date object
+  const [datePart] = etDateString.split(", ");
+  const [month, day, year] = datePart.split("/").map(Number);
+
+  // Create a new date with Eastern Time date components but in local time
+  return new Date(year, month - 1, day);
+};
+
 // Format date as YYYYMMDD for API
 const formatDateForAPI = (date: Date): string => {
-  // Create a new date to avoid modifying the original
-  const apiDate = new Date(date);
+  // First convert to Eastern Time
+  const etDateString = date.toLocaleString("en-US", {
+    timeZone: "America/New_York",
+  });
 
-  // Subtract one day to align with ESPN's schedule display
-  apiDate.setDate(apiDate.getDate());
+  // Parse the ET date string
+  const [datePart] = etDateString.split(", ");
+  const [month, day, year] = datePart.split("/").map(Number);
 
-  // Format as YYYYMMDD for the ESPN API
-  return apiDate.toISOString().split("T")[0].replace(/-/g, "");
+  // Create a date object
+  const adjustedDate = new Date(year, month - 1, day);
+
+  // Format as YYYYMMDD
+  const adjustedYear = adjustedDate.getFullYear();
+  const adjustedMonth = adjustedDate.getMonth() + 1;
+  const adjustedDayOfMonth = adjustedDate.getDate();
+
+  return `${adjustedYear}${adjustedMonth
+    .toString()
+    .padStart(2, "0")}${adjustedDayOfMonth.toString().padStart(2, "0")}`;
 };
 
 // Format date for display
 const formatDateForDisplay = (date: Date): string => {
+  // Display date in Eastern Time
   return date.toLocaleDateString("en-US", {
+    timeZone: "America/New_York",
     weekday: "long",
     month: "long",
     day: "numeric",
@@ -73,7 +104,7 @@ const Search = () => {
     gameId: string;
     rating: number;
   } | null>(null);
-  const [currentDate, setCurrentDate] = useState<Date>(new Date()); // Current date state
+  const [currentDate, setCurrentDate] = useState<Date>(getEasternTime()); // Use Eastern Time for initial date
   const [calendarOpen, setCalendarOpen] = useState(false); // Calendar popover state
   const size = 20; // Reduced size for multiple stars
   const { addRating, ratings: savedRatings } = useRatings(); // Get all saved ratings from context
@@ -94,7 +125,7 @@ const Search = () => {
 
   // Set to today
   const goToToday = () => {
-    setCurrentDate(new Date());
+    setCurrentDate(getEasternTime()); // Use Eastern Time for "today"
   };
 
   // Query games data first
@@ -659,6 +690,11 @@ const Search = () => {
 
 const getGames = async (date: Date) => {
   const formattedDate = formatDateForAPI(date);
+  console.log("Eastern Date", getEasternTime());
+  console.log("Formatted for API ", formatDateForAPI(getEasternTime()));
+  console.log("Format for display ", formatDateForDisplay(getEasternTime()));
+  console.log("API date:", formattedDate);
+
   const response = await fetch(
     `https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=${formattedDate}`
   );
