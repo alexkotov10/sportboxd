@@ -74,9 +74,6 @@ git clone https://github.com/alexkotov10/sportboxd.git
 # Navigate to the project directory
 cd sportboxd
 
-# Navigate to the client directory
-cd client
-
 # Install dependencies
 npm install
 
