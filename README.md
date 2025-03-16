@@ -9,13 +9,13 @@ Sportboxd is a platform for sports enthusiasts to track and rate sporting events
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="screenshots/home-screen.png" alt="Home Screen" width="80%" />
+  <img src="client/screenshots/home-screen.png" alt="Home Screen" width="80%" />
   <p><em>Home screen showing NBA game schedule with rating capabilities</em></p>
   
-  <img src="screenshots/ratings-page.png" alt="Ratings Page" width="80%" />
+  <img src="client/screenshots/ratings-page.png" alt="Ratings Page" width="80%" />
   <p><em>Personal ratings page with user's rated games history</em></p>
 
-  <img src="screenshots/dark-mode.png" alt="Dark Mode" width="80%" />
+  <img src="client/screenshots/dark-mode.png" alt="Dark Mode" width="80%" />
   <p><em>Dark mode interface for comfortable viewing</em></p>
 </div>
 
@@ -73,6 +73,9 @@ git clone https://github.com/alexkotov10/sportboxd.git
 
 # Navigate to the project directory
 cd sportboxd
+
+# Navigate to the client directory
+cd client
 
 # Install dependencies
 npm install
