@@ -51,7 +51,7 @@ Sportboxd is a platform for sports enthusiasts to track and rate sporting events
 ### Planned Backend (Coming Soon)
 
 - Node.js with Express
-- MongoDB for data storage
+- PostgreSQL for data storage
 - User authentication system
 - Social features for sharing and discussing games
 
