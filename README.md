@@ -5,7 +5,7 @@ Sportboxd is a platform for sports enthusiasts to track and rate sporting events
 ## 🔗 Live Demo
 
 <div align="center">
-  <img src="client/screenshots/demo.png" alt="Demo" width="80%" />
+  <img src="frontend/screenshots/demo.png" alt="Demo" width="80%" />
 </div>
 [Visit Sportboxd App](https://sportboxd-seven.vercel.app/)
 
